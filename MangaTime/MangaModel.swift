@@ -14,7 +14,7 @@ struct Manga: Identifiable {
     let title: String
     let imageName: String
     let status: String
-    let genres: [String]
+    let genre: [String]
     let author: [String]
     let synopsis: String
     let chapters: [String]

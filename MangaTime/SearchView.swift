@@ -18,7 +18,7 @@ struct SearchView: View {
     var filteredManga: [Manga] {
         mangaList.filter { manga in
             // Filtro per genere (se selezionato)
-            let matchesGenre = selectedGenre == nil || manga.title.contains(selectedGenre!)
+            let matchesGenre = selectedGenre == nil || manga.genre.contains(selectedGenre!)
             // Filtro per testo della ricerca
             let matchesSearch = searchText.isEmpty || manga.title.localizedCaseInsensitiveContains(searchText)
             return matchesGenre && matchesSearch
@@ -26,6 +26,7 @@ struct SearchView: View {
     }
 
     var body: some View {
+        
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
@@ -50,11 +51,7 @@ struct SearchView: View {
                     }
                     .padding(.top)
 
-                    // Sezione Generi
-                    Text("Genere")
-                        .font(.headline)
-                        .padding(.horizontal)
-                        .padding(.top)
+                   
 
                     // Pulsanti per i filtri dei generi
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -79,39 +76,44 @@ struct SearchView: View {
                         .padding(.horizontal)
                     }
 
+                    if searchText.isEmpty {
                     // Sezione Lista Manga
-                    Text("Raccomandati")
+                    Text("Raccomanded")
                         .font(.headline)
                         .padding(.horizontal)
                         .padding(.top)
+                    }
 
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            
-                                ForEach(filteredManga) { manga in
-                                    if selectedGenre == nil || manga.genres.contains(selectedGenre ?? "") {
-                                    NavigationLink(destination: MangaDetailView(manga: manga)) {
-                                        VStack {
-                                            Image(systemName: manga.imageName)
-                                                .resizable()
-                                                .frame(width: 100, height: 100)
-                                                .aspectRatio(contentMode: .fit)
-                                                .background(Color(.systemGray5))
-                                                .cornerRadius(12)
-                                            
-                                            Text(manga.title)
-                                                .font(.caption)
-                                                .foregroundColor(.primary)
-                                                .lineLimit(1)
+                                            HStack(spacing: 16) {
+                                                ForEach(mangaList.filter { manga in
+                                                    // Filtro per genere
+                                                    let matchesGenre = selectedGenre == nil || manga.genre.contains { $0.lowercased() == selectedGenre!.lowercased() }
+                                                    // Filtro per testo della ricerca
+                                                    let matchesSearch = searchText.isEmpty || manga.title.localizedCaseInsensitiveContains(searchText)
+                                                    return matchesGenre && matchesSearch
+                                                }) { manga in
+                                                    NavigationLink(destination: MangaDetailView(manga: manga)) {
+                                                        VStack {
+                                                            Image(systemName: manga.imageName)
+                                                                .resizable()
+                                                                .frame(width: 100, height: 100)
+                                                                .aspectRatio(contentMode: .fit)
+                                                                .background(Color(.systemGray5))
+                                                                .cornerRadius(12)
+                                                            
+                                                            Text(manga.title)
+                                                                .font(.caption)
+                                                                .foregroundColor(.primary)
+                                                                .lineLimit(1)
+                                                        }
+                                                        .frame(width: 120)
+                                                        .padding(.vertical, 8)
+                                                    }
+                                                }
+                                            }
+                                            .padding(.horizontal)
                                         }
-                                        .frame(width: 120)
-                                        .padding(.vertical, 8)
-                                    }
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
 
                     Spacer()
                 }
@@ -120,6 +122,8 @@ struct SearchView: View {
         }
     }
 }
+
+
     
     
     

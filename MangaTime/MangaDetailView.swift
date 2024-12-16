@@ -32,5 +32,5 @@ struct MangaDetailView: View {
 }
 
 #Preview {
-    MangaDetailView(manga: Manga(title: "Manga Title", imageName: "manga", status: "", genres: [""], author: [""], synopsis: "", chapters: [""]))
+    MangaDetailView(manga: Manga(title: "Manga Title", imageName: "manga", status: "", genre: [""], author: [""], synopsis: "", chapters: [""]))
 }

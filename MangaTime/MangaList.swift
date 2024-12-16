@@ -7,10 +7,10 @@
 
 import Foundation
 let mangaList = [
-    Manga(title: "Naruto", imageName: "book.fill", status: "", genres: ["Shonen, Action"], author: [""], synopsis: "", chapters: [""]),
-    Manga(title: "One Piece", imageName: "book.fill", status: "", genres: ["Shonent, Action, Adventure"], author: [""], synopsis: "", chapters: [""]),
-    Manga(title: "Dragon ball", imageName: "book.fill", status: "", genres: ["Shonen, Action"], author: [""], synopsis: "", chapters: [""]),
-    Manga(title: "Vinland Saga", imageName: "book.fill", status: "", genres: [""], author: ["Seinen, Action, Adventure"], synopsis: "", chapters: [""]),
-    Manga(title: "Berserk", imageName: "book.fill", status: "", genres: ["Seinen, Action, Drama, Fantasy"], author: [""], synopsis: "", chapters: [""]),
+    Manga(title: "Naruto", imageName: "book.fill", status: "", genre: ["Shonen, Action"], author: [""], synopsis: "", chapters: [""]),
+    Manga(title: "One Piece", imageName: "book.fill", status: "", genre: ["Shonent, Action, Adventure"], author: [""], synopsis: "", chapters: [""]),
+    Manga(title: "Dragon ball", imageName: "book.fill", status: "", genre: ["Shonen, Action"], author: [""], synopsis: "", chapters: [""]),
+    Manga(title: "Vinland Saga", imageName: "book.fill", status: "", genre: [""], author: ["Seinen, Action, Adventure"], synopsis: "", chapters: [""]),
+    Manga(title: "Berserk", imageName: "book.fill", status: "", genre: ["Seinen, Action, Drama, Fantasy"], author: [""], synopsis: "", chapters: [""]),
     ]
 
