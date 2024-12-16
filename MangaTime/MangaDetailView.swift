@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 struct MangaDetailView: View {
     let manga: Manga
     
@@ -29,12 +30,28 @@ struct MangaDetailView: View {
                 }
             }
             
+            // Bottone Add to List
+            HStack {
+                Button(action: {
+                    // Add to list action
+                }) {
+                    Text("ADD TO LIST")
+                        .font(.subheadline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(8)
+                }
+            }
+            
             // Synopsis
             Text("SYNOPSIS")
                 .font(.headline)
             Text(manga.synopsis)
                 .font(.body)
                 .lineLimit(4)
+            
+            Spacer()
             
             // Capitoli
             Text("CHAPTERS")
@@ -50,13 +67,13 @@ struct MangaDetailView: View {
                 }
             }
             
-            
             Spacer()
         }
         .padding()
     }
 }
 
+// Preview: Deve essere posizionata fuori dal corpo principale
 #Preview {
     MangaDetailView(
         manga: Manga(
@@ -67,12 +84,12 @@ struct MangaDetailView: View {
             author: ["Kentaro Miura"],
             synopsis: "Guts, a former mercenary now known as the 'Black Swordsman,' is out for revenge...",
             chapters: [
-                ("Berserk1"),
-                ("Berserk2"),
-                ("Berserk3"),
-                ("Berserk4")
-            
-            ]
+                "Berserk1",
+                "Berserk2",
+                "Berserk3",
+                "Berserk4"
+            ],
+            favorite: false // Valore per la proprietà aggiunta
         )
     )
 }

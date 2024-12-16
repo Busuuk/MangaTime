@@ -18,4 +18,5 @@ struct Manga: Identifiable {
     let author: [String]
     let synopsis: String
     let chapters: [String]
+    let favorite: Bool
 }
