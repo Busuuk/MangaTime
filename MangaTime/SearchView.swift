@@ -95,7 +95,7 @@ struct SearchView: View {
                                                 }) { manga in
                                                     NavigationLink(destination: MangaDetailView(manga: manga)) {
                                                         VStack {
-                                                            Image(systemName: manga.imageName)
+                                                            Image( manga.imageName)
                                                                 .resizable()
                                                                 .frame(width: 100, height: 100)
                                                                 .aspectRatio(contentMode: .fit)
