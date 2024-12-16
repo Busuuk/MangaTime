@@ -54,7 +54,7 @@ struct MangaDetailView: View {
             Spacer()
             
             // Capitoli
-            Text("CHAPTERS")
+            Text("VOLUMES")
                 .font(.headline)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {

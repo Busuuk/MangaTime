@@ -14,4 +14,5 @@ struct HomeView: View {
             Text("Example")
         }
     }
+    
 }

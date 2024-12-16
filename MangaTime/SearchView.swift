@@ -11,7 +11,7 @@ struct SearchView: View {
     @State private var selectedGenre: String? = nil
 
     // Lista di generi disponibili
-    let genres = ["Shonen", "Seinen", "Fantasy", "Action", "Drama", "Horror", "Sci-Fi"]
+    let genres = ["Adventure", "Fantasy", "Action", "Drama", "Horror", "Sci-Fi", "Romance", "Historical"]
         
     
 
@@ -32,21 +32,13 @@ struct SearchView: View {
                 VStack(alignment: .leading) {
                     // Barra di ricerca
                     HStack {
-                        TextField("Cerca un manga...", text: $searchText)
+                        TextField("Search a manga...", text: $searchText)
                             .padding(10)
                             .background(Color(.systemGray6))
                             .cornerRadius(8)
                             .padding(.horizontal)
 
-                        Button(action: {
-                            print("Cercando: \(searchText)")
-                        }) {
-                            Image(systemName: "magnifyingglass")
-                                .padding(10)
-                                .foregroundColor(.white)
-                                .background(Color.blue)
-                                .cornerRadius(8)
-                        }
+                       
                         .padding(.trailing)
                     }
                     .padding(.top)
@@ -118,7 +110,7 @@ struct SearchView: View {
                     Spacer()
                 }
             }
-            .navigationTitle("Ricerca Manga")
+            .navigationTitle("マンガ")
         }
     }
 }

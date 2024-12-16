@@ -7,16 +7,16 @@
 
 import Foundation
 let mangaList = [
-    Manga(title: "Naruto", imageName: "book.fill", status: "", genre: ["Shonen, Action"], author: [""], synopsis: "", chapters: [""], favorite: false),
-    Manga(title: "One Piece", imageName: "book.fill", status: "", genre: ["Shonent, Action, Adventure"], author: [""], synopsis: "", chapters: [""], favorite: false),
-    Manga(title: "Dragon ball", imageName: "book.fill", status: "", genre: ["Shonen, Action"], author: [""], synopsis: "", chapters: [""], favorite: false),
-    Manga(title: "Vinland Saga", imageName: "book.fill", status: "", genre: [""], author: ["Seinen, Action, Adventure"], synopsis: "", chapters: [""], favorite: false),
+    Manga(title: "NARUTO", imageName: "", status: "", genre: ["Action"], author: [""], synopsis: "", chapters: [""], favorite: false),
+    Manga(title: "ONE PIECE", imageName: "", status: "", genre: ["Action, Adventure"], author: [""], synopsis: "", chapters: [""], favorite: false),
+    Manga(title: "DRAGON BALL ", imageName: "", status: "", genre: ["Adventure, Action"], author: [""], synopsis: "", chapters: [""], favorite: false),
+    Manga(title: "VINLAND SAGA", imageName: "", status: "", genre: ["Historical, Action"], author: ["MAKOTO YUKIMURA"], synopsis: "", chapters: [""], favorite: false),
     Manga(
-        title: "Berserk",
+        title: "BERSERK",
         imageName: "Berserk1",
-        status: "Publishing",
-        genre: ["Action", "Fantasy"],
-        author: ["Kentaro Miura"],
+        status: "PUBLISHING",
+        genre: ["ACTION", "FANTASY"],
+        author: ["KENTARO MIURA"],
         synopsis: "Guts, a former mercenary now known as the 'Black Swordsman,' is out for revenge...",
         chapters: [
             ("Berserk1"),
