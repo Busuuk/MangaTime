@@ -89,10 +89,8 @@ struct SearchView: View {
                                                         VStack {
                                                             Image( manga.imageName)
                                                                 .resizable()
-                                                                .frame(width: 100, height: 100)
-                                                                .aspectRatio(contentMode: .fit)
-                                                                .background(Color(.systemGray5))
-                                                                .cornerRadius(12)
+                                                                .frame(width: 120, height: 180)
+                                                                .cornerRadius(8)
                                                             
                                                             Text(manga.title)
                                                                 .font(.caption)
@@ -112,11 +110,11 @@ struct SearchView: View {
                     Spacer()
                 }
             }
+
             .navigationTitle("マンガ")
         }
     }
 }
-
 
     
     

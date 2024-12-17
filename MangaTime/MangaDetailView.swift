@@ -77,13 +77,20 @@ struct MangaDetailView: View {
                             .frame(width: 120, height: 180)
                             .cornerRadius(8)
                     }
+                    
                 }
+                
+                
             }
             
             Spacer()
+            
         }
         .padding()
+        
+        
     }
+    
 }
 
 //#Preview {

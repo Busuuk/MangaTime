@@ -10,16 +10,12 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var viewModel: MangaViewModel // ViewModel globale
     
-    let profileImage = "profile_image"
-    let userName = "TENSHI わいふ"
-    let location = "Ukraine, Kyiv"
-    let bio = "Hello!♡"
+    let profileImage = "profileimage"
+    let userName = "黒戦士"
+    let location = "Italy"
+    let bio = ""
     
-    let favoriteCharacters = [
-        ("Guts", "Berserk1"),
-        ("Lawliet, L", "LawlietImage"),
-        ("Nana Osaki", "NanaImage")
-    ]
+    
     
     var body: some View {
         NavigationStack {
@@ -119,6 +115,7 @@ struct SectionView<Content: View>: View {
                 .bold()
             content
         }
+        .navigationTitle("マンガ")
     }
 }
 
