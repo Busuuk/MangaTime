@@ -73,7 +73,7 @@ struct SearchView: View {
 
                     if searchText.isEmpty {
                     // Sezione Lista Manga
-                    Text("RACCOMENDED")
+                    Text("RECOMMENTED")
                         .font(.headline)
                         .padding(.horizontal)
                         .padding(.top)
