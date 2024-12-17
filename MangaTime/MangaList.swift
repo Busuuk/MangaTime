@@ -22,7 +22,15 @@ let mangaList = [
             ("Berserk1"),
             ("Berserk2"),
             ("Berserk3"),
-            ("Berserk4")
+            ("Berserk4"),
+            ("Berserk5"),
+            ("Berserk6"),
+            ("Berserk7"),
+            ("Berserk8")
+            
+
+
+
             
         
         ],

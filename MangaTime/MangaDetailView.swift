@@ -27,71 +27,73 @@ struct MangaDetailView: View {
     @EnvironmentObject var viewModel: MangaViewModel // Accedi al ViewModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            // Titolo e immagine
-            HStack(alignment: .top, spacing: 12) {
-                Image(manga.imageName)
-                    .resizable()
-                    .frame(width: 100, height: 150)
-                    .cornerRadius(8)
-                    .accessibilityLabel("Cover image of \(manga.title)") // Accessibility label for image
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                // Titolo e immagine
+                HStack(alignment: .top, spacing: 12) {
+                    Image(manga.imageName)
+                        .resizable()
+                        .frame(width: 100, height: 150)
+                        .cornerRadius(8)
+                        .accessibilityLabel("Cover image of \(manga.title)") // Accessibility label for image
                     
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(manga.title)
-                        .font(.title3)
-                        .bold()
-                        .accessibilityLabel(manga.title) // Accessibility label for title
-                    Text(manga.status)
-                        .accessibilityLabel("Status: \(manga.status)") // Accessibility label for status
-                    Text(manga.genre.joined(separator: " | "))
-                        .accessibilityLabel("Genres: \(manga.genre.joined(separator: ", "))") // Accessibility label for genres
-                    Text("Author: \(manga.author.joined(separator: ", "))")
-                        .font(.caption)
-                        .accessibilityLabel("Author: \(manga.author.joined(separator: ", "))") // Accessibility label for authors
-                }
-            }
-            
-            // Bottone Add to List
-            Button(action: {
-                viewModel.toggleFavorite(manga: manga) // Modifica il valore preferito
-            }) {
-                Text(manga.favorite ? "REMOVE FROM LIST" : "ADD TO LIST")
-                    .font(.subheadline)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(manga.favorite ? Color.red.opacity(0.7) : Color.gray.opacity(0.2))
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-            .accessibilityLabel(manga.favorite ? "Remove \(manga.title) from list" : "Add \(manga.title) to list") // Accessibility label for button
-            
-            // Sinossi
-            Text("SYNOPSIS")
-                .font(.headline)
-            Text(manga.synopsis)
-                .font(.body)
-                .lineLimit(4)
-                .accessibilityLabel("Synopsis: \(manga.synopsis)") // Accessibility label for synopsis
-            
-            // Capitoli (Volumi)
-            Text("VOLUMES")
-                .font(.headline)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    ForEach(manga.chapters, id: \.self) { chapter in
-                        Image(chapter)
-                            .resizable()
-                            .frame(width: 120, height: 180)
-                            .cornerRadius(8)
-                            .accessibilityLabel("Chapter image of \(chapter)") // Accessibility label for chapters
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(manga.title)
+                            .font(.title3)
+                            .bold()
+                            .accessibilityLabel(manga.title) // Accessibility label for title
+                        Text(manga.status)
+                            .accessibilityLabel("Status: \(manga.status)") // Accessibility label for status
+                        Text(manga.genre.joined(separator: " | "))
+                            .accessibilityLabel("Genres: \(manga.genre.joined(separator: ", "))") // Accessibility label for genres
+                        Text("Author: \(manga.author.joined(separator: ", "))")
+                            .font(.caption)
+                            .accessibilityLabel("Author: \(manga.author.joined(separator: ", "))") // Accessibility label for authors
                     }
                 }
+                
+                // Bottone Add to List
+                Button(action: {
+                    viewModel.toggleFavorite(manga: manga) // Modifica il valore preferito
+                }) {
+                    Text(manga.favorite ? "REMOVE FROM LIST" : "ADD TO LIST")
+                        .font(.subheadline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(manga.favorite ? Color.purple : Color.purple)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .accessibilityLabel(manga.favorite ? "Remove \(manga.title) from list" : "Add \(manga.title) to list") // Accessibility label for button
+                
+                // Sinossi
+                Text("SYNOPSIS")
+                    .font(.headline)
+                Text(manga.synopsis)
+                    .font(.body)
+                    .lineLimit(4)
+                    .accessibilityLabel("Synopsis: \(manga.synopsis)") // Accessibility label for synopsis
+                
+                // Capitoli (Volumi)
+                Text("VOLUMES")
+                    .font(.headline)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(manga.chapters, id: \.self) { chapter in
+                            Image(chapter)
+                                .resizable()
+                                .frame(width: 120, height: 180)
+                                .cornerRadius(8)
+                                .accessibilityLabel("Chapter image of \(chapter)") // Accessibility label for chapters
+                        }
+                    }
+                }
+                
+                Spacer()
+                
             }
-            
-            Spacer()
-            
+            .padding()
         }
-        .padding()
     }
 }
     

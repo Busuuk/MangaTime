@@ -61,8 +61,8 @@ struct SearchView: View {
                                     Text(genre)
                                         .padding(.horizontal, 10)
                                         .padding(.vertical, 6)
-                                        .background(selectedGenre == genre ? Color.blue : Color(.systemGray6))
-                                        .foregroundColor(selectedGenre == genre ? .white : .black)
+                                        .background(selectedGenre == genre ? Color.purple : Color(.systemGray6))
+                                        .foregroundColor(selectedGenre == genre ? Color.white: .purple)
                                         .cornerRadius(8)
                                         .accessibilityLabel("Filter by \(genre)")
                                 }

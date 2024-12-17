@@ -17,12 +17,14 @@ struct ContentView: View {
             SearchView()
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
+                        .foregroundColor(.purple)
                 }
             
             // Profile Tab
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.fill")
+                        .foregroundColor(.purple)
                         
                 }
         }
