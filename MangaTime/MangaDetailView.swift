@@ -8,13 +8,29 @@
 import SwiftUI
 
 struct MangaDetailView: View {
-    let manga: Manga
+    
+    
+    var manga: Manga  /*Manga(
+        title: "Berserk",
+        imageName: "Berserk1",
+        status: "Publishing",
+        genre: ["Action", "Fantasy"],
+        author: ["Kentaro Miura"],
+        synopsis: "Guts, a former mercenary now known as the 'Black Swordsman,' is out for revenge...",
+        chapters: [
+            "Berserk1", "Berserk2", "Berserk3", "Berserk4"
+        ],
+        favorite: false
+    ) */
+    
+    
+    @EnvironmentObject var viewModel: MangaViewModel // Accedi al ViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // Title e Manga Image Row
+            // Titolo e immagine
             HStack(alignment: .top, spacing: 12) {
-                Image(manga.imageName) // Immagine principale
+                Image(manga.imageName)
                     .resizable()
                     .frame(width: 100, height: 150)
                     .cornerRadius(8)
@@ -31,36 +47,33 @@ struct MangaDetailView: View {
             }
             
             // Bottone Add to List
-            HStack {
-                Button(action: {
-                    // Add to list action
-                }) {
-                    Text("ADD TO LIST")
-                        .font(.subheadline)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(8)
-                }
+            Button(action: {
+                viewModel.toggleFavorite(manga: manga) // Modifica il valore preferito
+            }) {
+                Text(manga.favorite ? "REMOVE FROM LIST" : "ADD TO LIST")
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(manga.favorite ? Color.red.opacity(0.7) : Color.gray.opacity(0.2))
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
             }
             
-            // Synopsis
+            // Sinossi
             Text("SYNOPSIS")
                 .font(.headline)
             Text(manga.synopsis)
                 .font(.body)
                 .lineLimit(4)
             
-            Spacer()
-            
-            // Capitoli
+            // Capitoli (Volumi)
             Text("VOLUMES")
                 .font(.headline)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(0..<manga.chapters.count, id: \.self) { index in
-                        Image(manga.chapters[index]) // Converti la stringa in un'immagine
-                            .resizable()            // Ora puoi usare resizable
+                    ForEach(manga.chapters, id: \.self) { chapter in
+                        Image(chapter)
+                            .resizable()
                             .frame(width: 120, height: 180)
                             .cornerRadius(8)
                     }
@@ -73,23 +86,26 @@ struct MangaDetailView: View {
     }
 }
 
-// Preview: Deve essere posizionata fuori dal corpo principale
-#Preview {
-    MangaDetailView(
-        manga: Manga(
-            title: "Berserk",
-            imageName: "Berserk1",
-            status: "Publishing",
-            genre: ["Action", "Fantasy"],
-            author: ["Kentaro Miura"],
-            synopsis: "Guts, a former mercenary now known as the 'Black Swordsman,' is out for revenge...",
-            chapters: [
-                "Berserk1",
-                "Berserk2",
-                "Berserk3",
-                "Berserk4"
-            ],
-            favorite: false // Valore per la proprietà aggiunta
-        )
+//#Preview {
+  //  MangaDetailView()
+//}
+ #Preview {
+    let sampleManga = Manga(
+        title: "Berserk",
+        imageName: "Berserk1",
+        status: "Publishing",
+        genre: ["Action", "Fantasy"],
+        author: ["Kentaro Miura"],
+        synopsis: "Guts, a former mercenary now known as the 'Black Swordsman,' is out for revenge...",
+        chapters: [
+            "Berserk1", "Berserk2", "Berserk3", "Berserk4"
+        ],
+        favorite: false
     )
+     
+    let viewModel = MangaViewModel(mangaList: [sampleManga])
+    
+    return MangaDetailView(manga: sampleManga)
+        .environmentObject(viewModel) // Passa l'EnvironmentObject per la preview
 }
+

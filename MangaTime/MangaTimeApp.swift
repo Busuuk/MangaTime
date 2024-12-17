@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct MangaTimeApp: App {
+    @StateObject private var viewModel = MangaViewModel(mangaList: mangaList)
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }

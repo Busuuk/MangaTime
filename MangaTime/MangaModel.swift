@@ -10,13 +10,13 @@ import Foundation
 
 
 struct Manga: Identifiable {
-    let id = UUID()
-    let title: String
-    let imageName: String
-    let status: String
-    let genre: [String]
-    let author: [String]
-    let synopsis: String
-    let chapters: [String]
-    let favorite: Bool
+    var id = UUID()
+    var title: String
+    var imageName: String
+    var status: String
+    var genre: [String]
+    var author: [String]
+    var synopsis: String
+    var chapters: [String]
+    var favorite: Bool
 }
