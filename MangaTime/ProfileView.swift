@@ -51,6 +51,7 @@ struct ProfileView: View {
                     .clipShape(Circle())
                     .frame(width: 100, height: 100)
                     .offset(y: 50)
+                    .accessibilityLabel("Profile Image")
             }
             .padding(.bottom, 40)
             
@@ -82,6 +83,7 @@ struct MangaScrollView: View {
                                 .frame(width: 120, height: 170)
                                 .clipped()
                                 .cornerRadius(8)
+                                
                             
                             Text(manga.title)
                                 .font(.subheadline)

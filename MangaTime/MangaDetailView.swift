@@ -99,7 +99,7 @@ struct MangaDetailView: View {
                                            Text(showFullSynopsis ? "Read Less" : "Read More...")
                                                .font(.subheadline)
                                                .foregroundColor(.blue)
-                                               .padding(.top, 4)
+                                               .padding(.top, 4).accessibilityLabel(showFullSynopsis ? "Read Less" : "Read More")
                                        }
                                    }
                                }
@@ -113,7 +113,7 @@ struct MangaDetailView: View {
                                 .resizable()
                                 .frame(width: 120, height: 180)
                                 .cornerRadius(8)
-                                .accessibilityLabel("Chapter image of \(chapter)") // Accessibility label for chapters
+                                .accessibilityLabel("Volumes: \(chapter)") // Accessibility label for chapters
                         }
                     }
                 }
