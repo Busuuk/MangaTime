@@ -25,6 +25,9 @@ struct MangaDetailView: View {
     
     
     @EnvironmentObject var viewModel: MangaViewModel // Accedi al ViewModel
+    @State private var showFullSynopsis: Bool = false
+    @State private var isTruncated: Bool = false // Stato per verificare se il testo è troncato
+
     
     var body: some View {
         ScrollView {
@@ -66,14 +69,40 @@ struct MangaDetailView: View {
                 }
                 .accessibilityLabel(manga.favorite ? "Remove \(manga.title) from list" : "Add \(manga.title) to list") // Accessibility label for button
                 
-                // Sinossi
-                Text("SYNOPSIS")
-                    .font(.headline)
-                Text(manga.synopsis)
-                    .font(.body)
-                    .lineLimit(4)
-                    .accessibilityLabel("Synopsis: \(manga.synopsis)") // Accessibility label for synopsis
-                
+                // Sinossi con Read More solo se necessario
+                               Text("SYNOPSIS")
+                                   .font(.headline)
+                               
+                               VStack(alignment: .leading) {
+                                   Text(manga.synopsis)
+                                       .font(.body)
+                                       .lineLimit(showFullSynopsis ? nil : 4)
+                                       .background(GeometryReader { geometry in
+                                           Color.clear.onAppear {
+                                               let size = CGSize(width: geometry.size.width, height: .infinity)
+                                               let text = manga.synopsis as NSString
+                                               let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .body)]
+                                               
+                                               let boundingBox = text.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+                                               
+                                               if boundingBox.height > geometry.size.height {
+                                                   isTruncated = true
+                                               }
+                                           }
+                                       })
+                                       .animation(.easeInOut, value: showFullSynopsis)
+                                   
+                                   if isTruncated {
+                                       Button(action: {
+                                           showFullSynopsis.toggle()
+                                       }) {
+                                           Text(showFullSynopsis ? "Read Less" : "Read More...")
+                                               .font(.subheadline)
+                                               .foregroundColor(.blue)
+                                               .padding(.top, 4)
+                                       }
+                                   }
+                               }
                 // Capitoli (Volumi)
                 Text("VOLUMES")
                     .font(.headline)
