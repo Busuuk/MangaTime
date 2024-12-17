@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var viewModel: MangaViewModel // ViewModel globale
     
+    let backgroundImage = "backgroundimage"
     let profileImage = "profileimage"
     let userName = "黒戦士"
     let location = "Italy"
@@ -40,7 +41,7 @@ struct ProfileView: View {
     private var profileHeader: some View {
         VStack {
             ZStack {
-                Image("backgroundImage")
+                Image(backgroundImage)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)
@@ -86,6 +87,7 @@ struct MangaScrollView: View {
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundColor(.primary)
+                                .accessibilityLabel("Manga: \(manga.title)")
                             
                             
                         }
@@ -134,17 +136,8 @@ struct SectionView<Content: View>: View {
             synopsis: "Guts, a former mercenary now known as the 'Black Swordsman,' is out for revenge...",
             chapters: ["Berserk1", "Berserk2", "Berserk3"],
             favorite: true
-        ),
-        Manga(
-            title: "One Piece",
-            imageName: "OnePiece1",
-            status: "Ongoing",
-            genre: ["Adventure", "Action"],
-            author: ["Eiichiro Oda"],
-            synopsis: "Monkey D. Luffy sails the seas to become the Pirate King.",
-            chapters: ["OnePiece1", "OnePiece2"],
-            favorite: false
         )
+      
     ]
     
     // Inizializza il ViewModel con la lista di esempio

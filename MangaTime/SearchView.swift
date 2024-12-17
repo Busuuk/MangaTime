@@ -37,6 +37,8 @@ struct SearchView: View {
                             .background(Color(.systemGray6))
                             .cornerRadius(8)
                             .padding(.horizontal)
+                            .accessibilityLabel("Search for a manga by title")
+                            
 
                        
                         .padding(.trailing)
@@ -62,6 +64,7 @@ struct SearchView: View {
                                         .background(selectedGenre == genre ? Color.blue : Color(.systemGray6))
                                         .foregroundColor(selectedGenre == genre ? .white : .black)
                                         .cornerRadius(8)
+                                        .accessibilityLabel("Filter by \(genre)")
                                 }
                             }
                         }
@@ -74,6 +77,7 @@ struct SearchView: View {
                         .font(.headline)
                         .padding(.horizontal)
                         .padding(.top)
+                        .accessibilityLabel("Recommended Manga List")
                     }
 
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -96,6 +100,7 @@ struct SearchView: View {
                                                                 .font(.caption)
                                                                 .foregroundColor(.primary)
                                                                 .lineLimit(1)
+                                                                .accessibilityLabel("Manga: \(manga.title)")
                                                         }
                                                         .frame(width: 120)
                                                         .padding(.vertical, 8)
@@ -107,7 +112,7 @@ struct SearchView: View {
                                             .padding(.horizontal)
                                         }
 
-                    Spacer()
+                   
                 }
             }
 

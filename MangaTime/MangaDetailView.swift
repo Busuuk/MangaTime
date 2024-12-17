@@ -34,15 +34,20 @@ struct MangaDetailView: View {
                     .resizable()
                     .frame(width: 100, height: 150)
                     .cornerRadius(8)
-                
+                    .accessibilityLabel("Cover image of \(manga.title)") // Accessibility label for image
+                    
                 VStack(alignment: .leading, spacing: 6) {
                     Text(manga.title)
                         .font(.title3)
                         .bold()
+                        .accessibilityLabel(manga.title) // Accessibility label for title
                     Text(manga.status)
+                        .accessibilityLabel("Status: \(manga.status)") // Accessibility label for status
                     Text(manga.genre.joined(separator: " | "))
+                        .accessibilityLabel("Genres: \(manga.genre.joined(separator: ", "))") // Accessibility label for genres
                     Text("Author: \(manga.author.joined(separator: ", "))")
                         .font(.caption)
+                        .accessibilityLabel("Author: \(manga.author.joined(separator: ", "))") // Accessibility label for authors
                 }
             }
             
@@ -58,6 +63,7 @@ struct MangaDetailView: View {
                     .foregroundColor(.white)
                     .cornerRadius(8)
             }
+            .accessibilityLabel(manga.favorite ? "Remove \(manga.title) from list" : "Add \(manga.title) to list") // Accessibility label for button
             
             // Sinossi
             Text("SYNOPSIS")
@@ -65,6 +71,7 @@ struct MangaDetailView: View {
             Text(manga.synopsis)
                 .font(.body)
                 .lineLimit(4)
+                .accessibilityLabel("Synopsis: \(manga.synopsis)") // Accessibility label for synopsis
             
             // Capitoli (Volumi)
             Text("VOLUMES")
@@ -76,22 +83,18 @@ struct MangaDetailView: View {
                             .resizable()
                             .frame(width: 120, height: 180)
                             .cornerRadius(8)
+                            .accessibilityLabel("Chapter image of \(chapter)") // Accessibility label for chapters
                     }
-                    
                 }
-                
-                
             }
             
             Spacer()
             
         }
         .padding()
-        
-        
     }
-    
 }
+    
 
 //#Preview {
   //  MangaDetailView()
