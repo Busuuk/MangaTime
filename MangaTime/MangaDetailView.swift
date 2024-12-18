@@ -113,7 +113,8 @@ struct MangaDetailView: View {
                                 .resizable()
                                 .frame(width: 120, height: 180)
                                 .cornerRadius(8)
-                                .accessibilityLabel("Volumes: \(chapter)") // Accessibility label for chapters
+                                .accessibilityLabel("Volumes: \(chapter)")
+                            // Accessibility label for chapters
                         }
                     }
                 }

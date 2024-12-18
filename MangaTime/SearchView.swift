@@ -11,7 +11,7 @@ struct SearchView: View {
     @State private var selectedGenre: String? = nil
 
     // Lista di generi disponibili
-    let genres = ["Adventure", "Fantasy", "Action", "Drama", "Horror", "Sci-Fi", "Romance", "Historical"]
+    let genres = ["ADVENTURE", "FANTASY", "ACTION", "DRAMA", "HORROR", "SCI-FI", "ROMANCE", "HISTORICAL"]
         
     
 
@@ -37,7 +37,7 @@ struct SearchView: View {
                             .background(Color(.systemGray6))
                             .cornerRadius(8)
                             .padding(.horizontal)
-                            .accessibilityLabel("Search for a manga by title")
+                            .accessibilityLabel("Search for a manga")
                             
 
                        
@@ -73,7 +73,7 @@ struct SearchView: View {
 
                     if searchText.isEmpty {
                     // Sezione Lista Manga
-                    Text("RECOMMENTED")
+                    Text("RECOMMENDED")
                         .font(.headline)
                         .padding(.horizontal)
                         .padding(.top)
