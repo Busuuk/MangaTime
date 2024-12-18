@@ -86,13 +86,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - **Manga authors** for their amazing creations that inspired this app.
 - Community contributors and testers.
 
----
-
-## Contact 📬
-
-For questions or suggestions, reach out to:
-
-- **Your Name**: [your.email@example.com](mailto:your.email@example.com)
-- **GitHub**: [@yourusername](https://github.com/yourusername)
 
 Happy Manga Reading! 🎉
