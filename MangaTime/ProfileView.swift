@@ -86,9 +86,9 @@ struct MangaScrollView: View {
                                 
                             
                             Text(manga.title)
-                                .font(.subheadline)
-                                .bold()
+                                .font(.caption)
                                 .foregroundColor(.primary)
+                                .lineLimit(1)
                                 .accessibilityLabel("Manga: \(manga.title)")
                             
                             
