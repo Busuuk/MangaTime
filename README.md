@@ -1,4 +1,4 @@
-Manga Time
+## Manga Time
 
 Manga Time is a sleek and user-friendly app that allows you to browse and discover a wide selection of manga titles. With genre-based filtering, detailed manga info pages, and a personalized wishlist, it’s the perfect companion for every manga enthusiast.
 
